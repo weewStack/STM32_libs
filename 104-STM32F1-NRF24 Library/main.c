@@ -44,9 +44,9 @@ int main(void)
 	
 	
 	// PTX Mode
-	
+	/*
 	Digital_Input(PB,0); /// Push button for sending button for sending STM32
-	
+	*/
 	
 	// PRX Mode
 	/*
@@ -56,10 +56,8 @@ int main(void)
 	*/
 	while(1)
 	{
-		
-		
 		//Sending Code
-		
+		/*
 		if(R_GP(PB,0))
 		{
 			 if(nrf_send(1,"Hey WeeW\n"))
@@ -72,7 +70,7 @@ int main(void)
 			}
 			DelayMs(10);
 		}
-		
+		*/
 	
 		
 		//Recieving Code
