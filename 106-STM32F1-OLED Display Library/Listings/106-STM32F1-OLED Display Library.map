@@ -21,7 +21,7 @@ Section Cross References
     main.o(i.main) refers to main.o(i.down) for down
     main.o(i.main) refers to main.o(i.right) for right
     main.o(i.main) refers to main.o(i.left) for left
-    main.o(i.main) refers to i2c_drive.o(i.update_str_buffer_bit) for update_str_buffer_bit
+    main.o(i.main) refers to oled_drive.o(i.update_str_buffer_bit) for update_str_buffer_bit
     main.o(i.main) refers to oled_drive.o(i.update_str_buffer) for update_str_buffer
     main.o(i.main) refers to main.o(.constdata) for .constdata
     main.o(i.main) refers to main.o(.data) for saitama_rows
@@ -44,7 +44,6 @@ Section Cross References
     i2c_drive.o(i.i2c_write) refers to i2c_drive.o(i.i2c_add) for i2c_add
     i2c_drive.o(i.i2c_write) refers to i2c_drive.o(i.i2c_data) for i2c_data
     i2c_drive.o(i.i2c_write) refers to i2c_drive.o(i.i2c_stop) for i2c_stop
-    i2c_drive.o(i.update_str_buffer_bit) refers to i2c_drive.o(.constdata) for ASCII
     oled_drive.o(i.oled_blank) refers to oled_drive.o(i.oled_pos) for oled_pos
     oled_drive.o(i.oled_blank) refers to oled_drive.o(i.oled_data) for oled_data
     oled_drive.o(i.oled_cmd_1byte) refers to i2c_drive.o(i.i2c_start) for i2c_start
@@ -72,6 +71,7 @@ Section Cross References
     oled_drive.o(i.print_buffer) refers to oled_drive.o(i.oled_pos) for oled_pos
     oled_drive.o(i.print_buffer) refers to oled_drive.o(i.oled_data) for oled_data
     oled_drive.o(i.update_str_buffer) refers to oled_drive.o(.constdata) for ASCII
+    oled_drive.o(i.update_str_buffer_bit) refers to oled_drive.o(.constdata) for ASCII
     systick_time.o(i.DelayMs) refers to systick_time.o(i.DelayMillis) for DelayMillis
     systick_time.o(i.DelayUs) refers to systick_time.o(i.Delaymicro) for Delaymicro
     systick_time.o(i.systick_int) refers to systick_time.o(i.systick_init) for systick_init
@@ -208,6 +208,7 @@ Removing Unused input sections from the image.
     Removing i2c_drive.o(.revsh_text), (4 bytes).
     Removing i2c_drive.o(.rrx_text), (6 bytes).
     Removing i2c_drive.o(i.i2c_write), (52 bytes).
+    Removing i2c_drive.o(.constdata), (480 bytes).
     Removing i2c_drive.o(.data), (3974 bytes).
     Removing oled_drive.o(.rev16_text), (4 bytes).
     Removing oled_drive.o(.revsh_text), (4 bytes).
@@ -228,7 +229,7 @@ Removing Unused input sections from the image.
     Removing system_stm32f10x.o(i.SystemCoreClockUpdate), (164 bytes).
     Removing system_stm32f10x.o(.data), (20 bytes).
 
-35 unused section(s) (total 8824 bytes) removed from the image.
+36 unused section(s) (total 9304 bytes) removed from the image.
 
 ==============================================================================
 
@@ -238,52 +239,52 @@ Image Symbol Table
 
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
-    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit3.o ABSOLUTE
-    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardshut.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit2.o ABSOLUTE
+    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardshut.o ABSOLUTE
+    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit3.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit1.o ABSOLUTE
     ../clib/angel/dczerorl2.s                0x00000000   Number         0  __dczerorl2.o ABSOLUTE
     ../clib/angel/handlers.s                 0x00000000   Number         0  __scatter_zi.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit2.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry4.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry2.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry2.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry4.o ABSOLUTE
     ../clib/angel/rt.s                       0x00000000   Number         0  rt_raise.o ABSOLUTE
     ../clib/angel/scatter.s                  0x00000000   Number         0  __scatter.o ABSOLUTE
     ../clib/angel/startup.s                  0x00000000   Number         0  __main.o ABSOLUTE
-    ../clib/angel/sys.s                      0x00000000   Number         0  libspace.o ABSOLUTE
-    ../clib/angel/sys.s                      0x00000000   Number         0  sys_stackheap_outer.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  indicate_semi.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  sys_stackheap_outer.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  use_no_semi.o ABSOLUTE
-    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_command.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  libspace.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_exit.o ABSOLUTE
+    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_command.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_wrch.o ABSOLUTE
-    ../clib/armsys.c                         0x00000000   Number         0  no_argv.o ABSOLUTE
-    ../clib/armsys.c                         0x00000000   Number         0  _get_argv_nomalloc.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
+    ../clib/armsys.c                         0x00000000   Number         0  _get_argv_nomalloc.o ABSOLUTE
+    ../clib/armsys.c                         0x00000000   Number         0  no_argv.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
     ../clib/heapalloc.c                      0x00000000   Number         0  hrguard.o ABSOLUTE
     ../clib/heapaux.c                        0x00000000   Number         0  heapauxi.o ABSOLUTE
-    ../clib/libinit.s                        0x00000000   Number         0  libshutdown2.o ABSOLUTE
-    ../clib/libinit.s                        0x00000000   Number         0  libinit.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libinit2.o ABSOLUTE
+    ../clib/libinit.s                        0x00000000   Number         0  libshutdown2.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libshutdown.o ABSOLUTE
+    ../clib/libinit.s                        0x00000000   Number         0  libinit.o ABSOLUTE
     ../clib/memcpset.s                       0x00000000   Number         0  rt_memcpy_w.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_cppl_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_pvfn_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_stak_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_abrt_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  __raise.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_exit.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_general.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_formal.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_outer.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_stak_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_abrt_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_pvfn_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_cppl_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_segv_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_other.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_general.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_segv_inner.o ABSOLUTE
     ../clib/signal.s                         0x00000000   Number         0  defsig.o ABSOLUTE
     ../clib/stdlib.c                         0x00000000   Number         0  exit.o ABSOLUTE
     ../fplib/fpinit.s                        0x00000000   Number         0  fpinit.o ABSOLUTE
@@ -391,14 +392,12 @@ Image Symbol Table
     i.up                                     0x08000ec2   Section        0  main.o(i.up)
     i.update_buffer_bit                      0x08000ece   Section        0  oled_drive.o(i.update_buffer_bit)
     i.update_str_buffer                      0x080010c8   Section        0  oled_drive.o(i.update_str_buffer)
-    i.update_str_buffer_bit                  0x0800113c   Section        0  i2c_drive.o(i.update_str_buffer_bit)
+    i.update_str_buffer_bit                  0x0800113c   Section        0  oled_drive.o(i.update_str_buffer_bit)
     .constdata                               0x08001504   Section     1008  main.o(.constdata)
     ASCII                                    0x08001504   Data         480  main.o(.constdata)
-    .constdata                               0x080018f4   Section      480  i2c_drive.o(.constdata)
-    ASCII                                    0x080018f4   Data         480  i2c_drive.o(.constdata)
-    .constdata                               0x08001ad4   Section      480  oled_drive.o(.constdata)
-    ASCII                                    0x08001ad4   Data         480  oled_drive.o(.constdata)
-    .conststring                             0x08001cb4   Section      164  main.o(.conststring)
+    .constdata                               0x080018f4   Section      480  oled_drive.o(.constdata)
+    ASCII                                    0x080018f4   Data         480  oled_drive.o(.constdata)
+    .conststring                             0x08001ad4   Section      164  main.o(.conststring)
     .data                                    0x20000000   Section     3974  main.o(.data)
     weew_stack_rows                          0x20000000   Data           2  main.o(.data)
     weew_stack_cols                          0x20000002   Data           2  main.o(.data)
@@ -637,9 +636,9 @@ Image Symbol Table
     up                                       0x08000ec3   Thumb Code    12  main.o(i.up)
     update_buffer_bit                        0x08000ecf   Thumb Code   504  oled_drive.o(i.update_buffer_bit)
     update_str_buffer                        0x080010c9   Thumb Code   112  oled_drive.o(i.update_str_buffer)
-    update_str_buffer_bit                    0x0800113d   Thumb Code   962  i2c_drive.o(i.update_str_buffer_bit)
-    Region$$Table$$Base                      0x08001d58   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08001d78   Number         0  anon$$obj.o(Region$$Table)
+    update_str_buffer_bit                    0x0800113d   Thumb Code   962  oled_drive.o(i.update_str_buffer_bit)
+    Region$$Table$$Base                      0x08001b78   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08001b98   Number         0  anon$$obj.o(Region$$Table)
     oled_buffer                              0x20000f88   Data        1024  main.o(.bss)
     __libspace_start                         0x20001388   Data          96  libspace.o(.bss)
     __temporary_stack_top$libspace           0x200013e8   Data           0  libspace.o(.bss)
@@ -652,9 +651,9 @@ Memory Map of the image
 
   Image Entry point : 0x080001c9
 
-  Load Region LR_1 (Base: 0x08000000, Size: 0x00002d00, Max: 0xffffffff, ABSOLUTE, COMPRESSED[0x00002494])
+  Load Region LR_1 (Base: 0x08000000, Size: 0x00002b20, Max: 0xffffffff, ABSOLUTE, COMPRESSED[0x000022b4])
 
-    Execution Region ER_RO (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00001d78, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00001b98, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -725,7 +724,7 @@ Memory Map of the image
     0x08000378   0x08000378   0x00000008   Code   RO          424    i.SetSysClock       system_stm32f10x.o
     0x08000380   0x08000380   0x000000e0   Code   RO          425    i.SetSysClockTo72   system_stm32f10x.o
     0x08000460   0x08000460   0x00000060   Code   RO          427    i.SystemInit        system_stm32f10x.o
-    0x080004c0   0x080004c0   0x00000022   Code   RO          246    i.clear_buffer      oled_drive.o
+    0x080004c0   0x080004c0   0x00000022   Code   RO          240    i.clear_buffer      oled_drive.o
     0x080004e2   0x080004e2   0x0000000c   Code   RO            4    i.down              main.o
     0x080004ee   0x080004ee   0x00000002   PAD
     0x080004f0   0x080004f0   0x000000a4   Code   RO          177    i.i2c_add           i2c_drive.o
@@ -736,39 +735,38 @@ Memory Map of the image
     0x08000768   0x08000768   0x000000b4   Code   RO          109    i.init_GP           gp_drive.o
     0x0800081c   0x0800081c   0x0000000c   Code   RO            5    i.left              main.o
     0x08000828   0x08000828   0x000003f4   Code   RO            6    i.main              main.o
-    0x08000c1c   0x08000c1c   0x00000036   Code   RO          247    i.oled_blank        oled_drive.o
-    0x08000c52   0x08000c52   0x0000002e   Code   RO          248    i.oled_cmd_1byte    oled_drive.o
-    0x08000c80   0x08000c80   0x0000003a   Code   RO          249    i.oled_cmd_2byte    oled_drive.o
-    0x08000cba   0x08000cba   0x0000002e   Code   RO          250    i.oled_data         oled_drive.o
-    0x08000ce8   0x08000ce8   0x000000c8   Code   RO          251    i.oled_init         oled_drive.o
-    0x08000db0   0x08000db0   0x0000000e   Code   RO          253    i.oled_init_64      oled_drive.o
-    0x08000dbe   0x08000dbe   0x00000022   Code   RO          254    i.oled_msg          oled_drive.o
-    0x08000de0   0x08000de0   0x00000030   Code   RO          255    i.oled_pos          oled_drive.o
-    0x08000e10   0x08000e10   0x0000003c   Code   RO          256    i.oled_print        oled_drive.o
-    0x08000e4c   0x08000e4c   0x00000036   Code   RO          257    i.print_buffer      oled_drive.o
+    0x08000c1c   0x08000c1c   0x00000036   Code   RO          241    i.oled_blank        oled_drive.o
+    0x08000c52   0x08000c52   0x0000002e   Code   RO          242    i.oled_cmd_1byte    oled_drive.o
+    0x08000c80   0x08000c80   0x0000003a   Code   RO          243    i.oled_cmd_2byte    oled_drive.o
+    0x08000cba   0x08000cba   0x0000002e   Code   RO          244    i.oled_data         oled_drive.o
+    0x08000ce8   0x08000ce8   0x000000c8   Code   RO          245    i.oled_init         oled_drive.o
+    0x08000db0   0x08000db0   0x0000000e   Code   RO          247    i.oled_init_64      oled_drive.o
+    0x08000dbe   0x08000dbe   0x00000022   Code   RO          248    i.oled_msg          oled_drive.o
+    0x08000de0   0x08000de0   0x00000030   Code   RO          249    i.oled_pos          oled_drive.o
+    0x08000e10   0x08000e10   0x0000003c   Code   RO          250    i.oled_print        oled_drive.o
+    0x08000e4c   0x08000e4c   0x00000036   Code   RO          251    i.print_buffer      oled_drive.o
     0x08000e82   0x08000e82   0x0000000c   Code   RO            7    i.right             main.o
     0x08000e8e   0x08000e8e   0x0000001c   Code   RO            8    i.step              main.o
     0x08000eaa   0x08000eaa   0x00000018   Code   RO          361    i.systick_init      systick_time.o
     0x08000ec2   0x08000ec2   0x0000000c   Code   RO            9    i.up                main.o
-    0x08000ece   0x08000ece   0x000001f8   Code   RO          259    i.update_buffer_bit  oled_drive.o
+    0x08000ece   0x08000ece   0x000001f8   Code   RO          253    i.update_buffer_bit  oled_drive.o
     0x080010c6   0x080010c6   0x00000002   PAD
-    0x080010c8   0x080010c8   0x00000074   Code   RO          260    i.update_str_buffer  oled_drive.o
-    0x0800113c   0x0800113c   0x000003c8   Code   RO          183    i.update_str_buffer_bit  i2c_drive.o
+    0x080010c8   0x080010c8   0x00000074   Code   RO          254    i.update_str_buffer  oled_drive.o
+    0x0800113c   0x0800113c   0x000003c8   Code   RO          255    i.update_str_buffer_bit  oled_drive.o
     0x08001504   0x08001504   0x000003f0   Data   RO           11    .constdata          main.o
-    0x080018f4   0x080018f4   0x000001e0   Data   RO          184    .constdata          i2c_drive.o
-    0x08001ad4   0x08001ad4   0x000001e0   Data   RO          261    .constdata          oled_drive.o
-    0x08001cb4   0x08001cb4   0x000000a4   Data   RO           12    .conststring        main.o
-    0x08001d58   0x08001d58   0x00000020   Data   RO          628    Region$$Table       anon$$obj.o
+    0x080018f4   0x080018f4   0x000001e0   Data   RO          256    .constdata          oled_drive.o
+    0x08001ad4   0x08001ad4   0x000000a4   Data   RO           12    .conststring        main.o
+    0x08001b78   0x08001b78   0x00000020   Data   RO          628    Region$$Table       anon$$obj.o
 
 
-    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x08001d78, Size: 0x00000f88, Max: 0xffffffff, ABSOLUTE, COMPRESSED[0x0000071c])
+    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x08001b98, Size: 0x00000f88, Max: 0xffffffff, ABSOLUTE, COMPRESSED[0x0000071c])
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x20000000   COMPRESSED   0x00000f86   Data   RW           13    .data               main.o
 
 
-    Execution Region ER_ZI (Exec base: 0x20000f88, Load base: 0x08002494, Size: 0x00000a60, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_ZI (Exec base: 0x20000f88, Load base: 0x080022b4, Size: 0x00000a60, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -786,15 +784,15 @@ Image component sizes
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
        268         28          0          0          0       1945   gp_drive.o
-      1600         52        480          0          0       6191   i2c_drive.o
+       632         46          0          0          0       3407   i2c_drive.o
       1088        192       1172       3974       1024      10279   main.o
-      1268         40        480          0          0       9827   oled_drive.o
+      2236         46        480          0          0      11419   oled_drive.o
         64         26        236          0       1536        840   startup_stm32f10x_md.o
        328         28          0          0          0       2193   system_stm32f10x.o
         78          6          0          0          0       1363   systick_time.o
 
     ----------------------------------------------------------------------
-      4700        372       2400       3976       2560      32638   Object Totals
+      4700        372       1920       3976       2560      31446   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          6          0          0          2          0          0   (incl. Padding)
 
@@ -844,15 +842,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      5144        388       2400       3976       2656      31478   Grand Totals
-      5144        388       2400       1820       2656      31478   ELF Image Totals (compressed)
-      5144        388       2400       1820          0          0   ROM Totals
+      5144        388       1920       3976       2656      30286   Grand Totals
+      5144        388       1920       1820       2656      30286   ELF Image Totals (compressed)
+      5144        388       1920       1820          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 7544 (   7.37kB)
+    Total RO  Size (Code + RO Data)                 7064 (   6.90kB)
     Total RW  Size (RW Data + ZI Data)              6632 (   6.48kB)
-    Total ROM Size (Code + RO Data + RW Data)       9364 (   9.14kB)
+    Total ROM Size (Code + RO Data + RW Data)       8884 (   8.68kB)
 
 ==============================================================================
 
