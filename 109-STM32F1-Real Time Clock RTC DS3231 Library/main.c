@@ -20,9 +20,9 @@ PB7 -> SDA
 char yr = 20;
 char month = 10;
 char day = 3;
-char hrs = 20;
-char min = 4;
-char sec = 40;
+char hrs = 22;
+char min = 11;
+char sec = 15;
 char time_table[7];
 char time_str[12],date_str[12];
 
