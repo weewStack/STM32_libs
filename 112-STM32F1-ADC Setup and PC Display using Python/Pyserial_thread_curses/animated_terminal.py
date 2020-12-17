@@ -16,6 +16,8 @@ uart = True
 row = 0
 col = 0
 
+# Initialize the curses library
+
 
 def curses_init():
     global screen
@@ -28,6 +30,8 @@ def curses_init():
     for i in range(40, 140):
         curses.init_color(i, 255, i*3, 255-i)
         curses.init_pair(i + 1, 0, i+1)
+
+# Initialize The thread that will run into the background
 
 
 def my_Serial():
@@ -67,15 +71,21 @@ def my_Serial():
 
         # print(data_sensor)
 
+# Running the Thread
+
 
 def serial_thread():
     t1 = threading.Thread(target=my_Serial)
     t1.daemon = True
     t1.start()
 
+# Handling the Interrupt
+
 
 def signal_handler(signum, frame):
     sys.exit()
+
+# Main thread and user interraction
 
 
 def main_thread():
@@ -88,9 +98,10 @@ def main_thread():
             break
 
 
+# Managing the Interrupt
 signal.signal(signal.SIGINT, signal_handler)
 
-
-curses_init()
-serial_thread()
-main_thread()
+# Main program
+curses_init()    # Initializing the the curses lib
+serial_thread()  # Running the the Secondary thread
+main_thread()  # Running the Main thread
